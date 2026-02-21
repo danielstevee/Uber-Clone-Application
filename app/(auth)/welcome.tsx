@@ -1,8 +1,16 @@
 import { router } from "expo-router";
 import { useState } from "react";
-import { Text, TouchableOpacity, View, Dimensions } from "react-native";
+import { Pressable } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  Dimensions,
+  Image,
+} from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 import { onboarding } from "../../constants";
+
 
 const { width } = Dimensions.get("window");
 
@@ -21,11 +29,36 @@ const Onboarding = () => {
         </TouchableOpacity>
       </View>
 
+      {/* Indicator */}
+<View
+  style={{
+    flexDirection: "row",
+    justifyContent: "center", // <-- ini yang bikin center
+    alignItems: "center",
+    marginBottom: 20,
+    width: "100%",
+  }}
+>
+  {onboarding.map((_, index) => (
+    <View
+      key={index}
+      style={{
+        width: activeIndex === index ? 45 : 15,
+        height: 8,
+        borderRadius: 4,
+        marginHorizontal: 4,
+        backgroundColor:
+          activeIndex === index ? "black" : "#D1D5DB",
+      }}
+    />
+  ))}
+</View>
+
       {/* Carousel */}
       <View style={{ flex: 1 }}>
         <Carousel
           width={width}
-          height={400}
+          height={500}
           data={onboarding}
           scrollAnimationDuration={500}
           onSnapToItem={(index) => setActiveIndex(index)}
@@ -38,18 +71,31 @@ const Onboarding = () => {
                 paddingHorizontal: 24,
               }}
             >
+              <Image
+                source={item.image}
+                style={{ width: "100%", height: 300, marginTop: 30 }}
+                resizeMode="contain"
+              />
+
               <Text
                 style={{
                   fontSize: 24,
                   fontWeight: "bold",
                   textAlign: "center",
-                  marginBottom: 16,
+                  marginTop: 20,
+                  marginBottom: 12,
                 }}
               >
                 {item.title}
               </Text>
 
-              <Text style={{ textAlign: "center", color: "gray" }}>
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "gray",
+                  fontSize: 16,
+                }}
+              >
                 {item.description}
               </Text>
             </View>
@@ -58,7 +104,8 @@ const Onboarding = () => {
       </View>
 
       {/* Bottom Button */}
-      <View style={{ padding: 24 }}>
+    
+      <View style={{ paddingHorizontal: 24, marginBottom: 40 }}>
         <TouchableOpacity
           onPress={() => {
             if (isLastSlide) {
@@ -76,9 +123,10 @@ const Onboarding = () => {
               color: "white",
               textAlign: "center",
               fontWeight: "bold",
+              fontSize: 16,
             }}
           >
-            {isLastSlide ? "Get Started" : "Swipe"}
+            {"Get Started" }
           </Text>
         </TouchableOpacity>
       </View>
