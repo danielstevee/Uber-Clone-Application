@@ -1,0 +1,63 @@
+import {
+  TextInput,
+  View,
+  Text,
+  Image,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+} from "react-native";
+
+interface InputFieldProps {
+  label: string;
+  icon?: any;
+  secureTextEntry?: boolean;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  placeholder?: string;
+}
+
+const InputField = ({
+  label,
+  icon,
+  secureTextEntry = false,
+  ...props
+}: InputFieldProps) => (
+  <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={{ marginVertical: 8, width: "100%" }}>
+        <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 6 }}>
+          {label}
+        </Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            borderWidth: 1,          // ⬅️ BORDER FIX
+            borderColor: "#000",    // ⬅️ WARNA BORDER
+            borderRadius: 999,
+            paddingHorizontal: 12,
+            backgroundColor: "#fff",
+          }}
+        >
+          {icon && (
+            <Image
+              source={icon}
+              style={{ width: 20, height: 20, marginRight: 8 }}
+            />
+          )}
+
+          <TextInput
+            secureTextEntry={secureTextEntry}
+            style={{ flex: 1, paddingVertical: 10 }}
+            {...props}
+          />
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  </KeyboardAvoidingView>
+);
+
+export default InputField;

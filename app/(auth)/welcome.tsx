@@ -48,12 +48,11 @@ const Onboarding = () => {
         borderRadius: 4,
         marginHorizontal: 4,
         backgroundColor:
-          activeIndex === index ? "black" : "#D1D5DB",
+          activeIndex === index ? "#1E90FF" : "#D1D5DB",
       }}
     />
   ))}
 </View>
-
       {/* Carousel */}
       <View style={{ flex: 1 }}>
         <Carousel
@@ -108,14 +107,17 @@ const Onboarding = () => {
       <View style={{ paddingHorizontal: 24, marginBottom: 40 }}>
         <TouchableOpacity
           onPress={() => {
-            if (isLastSlide) {
               router.replace("/(auth)/sign-up");
-            }
           }}
           style={{
-            backgroundColor: "black",
+            backgroundColor: "#1E90FF",
             paddingVertical: 16,
             borderRadius: 30,
+            shadowColor: "#1E90FF",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
           }}
         >
           <Text
