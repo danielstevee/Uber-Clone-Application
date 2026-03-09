@@ -36,7 +36,7 @@ const InputField = ({
             flexDirection: "row",
             alignItems: "center",
             borderWidth: 1,          // ⬅️ BORDER FIX
-            borderColor: "#000",    // ⬅️ WARNA BORDER
+            borderColor: "#A0A0A0",    // ⬅️ WARNA BORDER
             borderRadius: 999,
             paddingHorizontal: 12,
             backgroundColor: "#fff",
@@ -45,13 +45,13 @@ const InputField = ({
           {icon && (
             <Image
               source={icon}
-              style={{ width: 20, height: 20, marginRight: 8 }}
+              style={{ width: 25, height: 25, marginRight: 13 }}
             />
           )}
 
           <TextInput
             secureTextEntry={secureTextEntry}
-            style={{ flex: 1, paddingVertical: 10 }}
+            style={{ flex: 1, paddingVertical: 18 }}
             {...props}
           />
         </View>
