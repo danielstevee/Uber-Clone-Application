@@ -35,8 +35,8 @@ const InputField = ({
           style={{
             flexDirection: "row",
             alignItems: "center",
-            borderWidth: 1,          // ⬅️ BORDER FIX
-            borderColor: "#A0A0A0",    // ⬅️ WARNA BORDER
+            borderWidth: 1,         
+            borderColor: "#A0A0A0",    
             borderRadius: 999,
             paddingHorizontal: 12,
             backgroundColor: "#fff",

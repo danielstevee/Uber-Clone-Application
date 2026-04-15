@@ -72,7 +72,7 @@ const SignUp = () => {
             }
           />
 
-<View style={{ marginTop: 60 }}>
+<View style={{ marginTop: 25 }}>
   <TouchableOpacity
     onPress={onSignUpPress}
     style={{
